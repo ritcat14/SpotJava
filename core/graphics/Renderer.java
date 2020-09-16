@@ -14,7 +14,6 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
-import java.util.ArrayList;
 import java.util.List;
 
 import static SpotJava.core.graphics.Frame.HEIGHT;

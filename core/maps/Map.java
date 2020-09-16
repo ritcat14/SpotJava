@@ -1,28 +1,35 @@
-package SpotJava.game.maps;
+package SpotJava.core.maps;
 
 import SpotJava.core.input.Event;
 import SpotJava.core.input.EventDispatcher;
 import SpotJava.core.input.EventListener;
 import SpotJava.core.input.KeyEvent;
-import SpotJava.core.input.MouseEvent;
 import SpotJava.core.objects.Entity;
 import SpotJava.core.objects.Light;
 import SpotJava.game.entities.Player;
 import SpotJava.core.graphics.Renderer;
+import SpotJava.core.gui.text.TextAlignment;
+import SpotJava.core.gui.text.TextFormat;
 
 import static SpotJava.core.util.Images.getImage;
+import static SpotJava.core.util.Files.*;
 import static SpotJava.core.input.Event.Type.*;
 import static SpotJava.core.graphics.Frame.*;
 import static SpotJava.game.entities.Player.*;
-import static SpotJava.game.maps.Tile.TILE_SIZE;
+import static SpotJava.core.maps.Tile.TILE_SIZE;
 import static SpotJava.core.util.Maths.*;
-import static SpotJava.game.states.Game.addLight;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.image.BufferedImage;
 
 
-public class Map extends Entity implements EventListener {
+public abstract class Map extends Entity implements EventListener {
+
+    private static List<Light> lights = new ArrayList<>();
+    private static List<Light> lightsToAdd = new ArrayList<>();
+    private static List<Light> lightsToRemove = new ArrayList<>();
 
     private boolean keyUp, keyDown, keyLeft, keyRight;
 
@@ -31,34 +38,39 @@ public class Map extends Entity implements EventListener {
     private double x1 = playerSpeed * Math.cos(Math.toRadians(45));
     private double y1 = playerSpeed * Math.cos(Math.toRadians(45));
 
-    private int worldWidth = WIDTH;
-    private int worldHeight = HEIGHT;
+    private int worldWidth;
+    private int worldHeight;
 
-    private int tileNumX = worldWidth / TILE_SIZE;
-    private int tileNumY = worldHeight / TILE_SIZE;
+    private int tileNumX;
+    private int tileNumY;
 
     private Tile[][] tiles;
-    private Tile grassTile;
 
     public Map(Player player) {
         super(0, 0, WIDTH, HEIGHT);
         this.player = player;
+    }
+
+    protected void loadMap(String mapFile, List<Tile> availableTiles) {
+        String[] mapData = extractDataFromResource(mapFile);
+        String[] firstRow = mapData[0].split(",");
+        tileNumX = firstRow.length - 1;
+        tileNumY = mapData.length - 1;
+
+        worldWidth = tileNumX * TILE_SIZE;
+        worldHeight = tileNumY * TILE_SIZE;
 
         tiles = new Tile[tileNumY][tileNumX];
 
-        BufferedImage tileImage = getImage("images/tiles/grass.png");
-
-        grassTile = new Tile(tileImage);
-
         for (int y = 0; y < tileNumY; y++) {
+            String[] rowData = mapData[y].split(",");
             for (int x = 0; x < tileNumX; x++) {
-                tiles[y][x] = grassTile;
-                if (x == 5) tiles[y][x].setSolid(true);
+                int data = Integer.valueOf(rowData[x]);
+                tiles[y][x] = availableTiles.get(data);
             }
         }
 
         addLight(new Light(WIDTH/2, HEIGHT/2, 250, new Color(1f, 1f, 0.0f, 0.0f)));
-
     }
 
     public void update() {
@@ -127,6 +139,26 @@ public class Map extends Entity implements EventListener {
         }
 
         player.render(renderer);
+        
+        lights.addAll(lightsToAdd);
+        lightsToAdd.clear();
+        for (Light light : lights) {
+            if (light.isRemoved()) {
+                lightsToRemove.add(light);
+            }
+        }
+        lights.removeAll(lightsToRemove);
+        lightsToRemove.clear();
+        renderer.renderLights(lights);
+
+        Font textFont = Renderer.staticFont.deriveFont(15f);
+
+        renderer.renderString("World width:" + worldWidth, textFont, Color.YELLOW, new Rectangle(25, 100, 200, 50), TextAlignment.MIDDLE_LEFT, TextFormat.NONE);
+        renderer.renderString("World height:" + worldHeight, textFont, Color.YELLOW, new Rectangle(25, 125, 200, 50), TextAlignment.MIDDLE_LEFT, TextFormat.NONE);
+        renderer.renderString("World X:" + x, textFont, Color.YELLOW, new Rectangle(25, 150, 200, 50), TextAlignment.MIDDLE_LEFT, TextFormat.NONE);
+        renderer.renderString("World Y:" + y, textFont, Color.YELLOW, new Rectangle(25, 175, 200, 50), TextAlignment.MIDDLE_LEFT, TextFormat.NONE);
+        renderer.renderString("Tile Num X:" + (tileNumX+1), textFont, Color.YELLOW, new Rectangle(25, 200, 200, 50), TextAlignment.MIDDLE_LEFT, TextFormat.NONE);
+        renderer.renderString("Tile Num Y:" + (tileNumY+1), textFont, Color.YELLOW, new Rectangle(25, 225, 200, 50), TextAlignment.MIDDLE_LEFT, TextFormat.NONE);
     }
 
     private boolean keyPressed(KeyEvent event) {
@@ -172,6 +204,10 @@ public class Map extends Entity implements EventListener {
         dispatcher.dispatch(KEY_RELEASED, event1 -> keyReleased((KeyEvent) event1));
         dispatcher.dispatch(KEY_PRESSED, event1 -> player.keyPressed((KeyEvent) event1));
         dispatcher.dispatch(KEY_RELEASED, event1 -> player.keyReleased((KeyEvent) event1));
+    }
+
+    public static void addLight(Light light) {
+        lightsToAdd.add(light);
     }
     
 }

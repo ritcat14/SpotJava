@@ -1,4 +1,4 @@
-package SpotJava.game.maps;
+package SpotJava.core.maps;
 
 import SpotJava.core.graphics.Renderer;
 
