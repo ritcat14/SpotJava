@@ -1,25 +1,26 @@
-package game.maps;
+package SpotJava.game.maps;
 
-import core.input.Event;
-import core.input.EventDispatcher;
-import core.input.EventListener;
-import core.input.KeyEvent;
-import core.input.MouseEvent;
-import core.objects.Entity;
-import core.objects.Light;
-import game.entities.Player;
+import SpotJava.core.input.Event;
+import SpotJava.core.input.EventDispatcher;
+import SpotJava.core.input.EventListener;
+import SpotJava.core.input.KeyEvent;
+import SpotJava.core.input.MouseEvent;
+import SpotJava.core.objects.Entity;
+import SpotJava.core.objects.Light;
+import SpotJava.game.entities.Player;
+import SpotJava.core.graphics.Renderer;
 
-import static core.util.Images.getImage;
-import static core.input.Event.Type.*;
-import static core.graphics.Frame.*;
-import static game.entities.Player.*;
-import static game.maps.Tile.TILE_SIZE;
-import static core.util.Maths.*;
+import static SpotJava.core.util.Images.getImage;
+import static SpotJava.core.input.Event.Type.*;
+import static SpotJava.core.graphics.Frame.*;
+import static SpotJava.game.entities.Player.*;
+import static SpotJava.game.maps.Tile.TILE_SIZE;
+import static SpotJava.core.util.Maths.*;
+import static SpotJava.game.states.Game.addLight;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import core.graphics.Renderer;
 
 public class Map extends Entity implements EventListener {
 
@@ -39,8 +40,6 @@ public class Map extends Entity implements EventListener {
     private Tile[][] tiles;
     private Tile grassTile;
 
-    private Light testLight;
-
     public Map(Player player) {
         super(0, 0, WIDTH, HEIGHT);
         this.player = player;
@@ -58,7 +57,7 @@ public class Map extends Entity implements EventListener {
             }
         }
 
-        testLight = new Light(WIDTH/2, HEIGHT/2, 250, new Color(1f, 1f, 0.0f, 0.0f));
+        addLight(new Light(WIDTH/2, HEIGHT/2, 250, new Color(1f, 1f, 0.0f, 0.0f)));
 
     }
 
@@ -126,8 +125,6 @@ public class Map extends Entity implements EventListener {
                 }
             }
         }
-
-        testLight.render(renderer.getGameCanvas().getCurrentFrameBuffer());
 
         player.render(renderer);
     }

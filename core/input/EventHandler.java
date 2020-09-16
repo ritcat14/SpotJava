@@ -1,4 +1,4 @@
-package core.input;
+package SpotJava.core.input;
 
 public interface EventHandler {
 

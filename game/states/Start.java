@@ -1,23 +1,23 @@
-package game.states;
+package SpotJava.game.states;
 
 import java.awt.*;
 
-import core.Engine;
-import core.graphics.Frame;
-import core.graphics.Renderer;
-import core.gui.GButton;
-import core.gui.GContainer;
-import core.gui.GLabel;
-import core.input.Event;
-import core.input.MouseEvent;
-import core.states.State;
-import core.states.StateName;
+import SpotJava.core.Engine;
+import SpotJava.core.graphics.Frame;
+import SpotJava.core.graphics.Renderer;
+import SpotJava.core.gui.GButton;
+import SpotJava.core.gui.GContainer;
+import SpotJava.core.gui.GLabel;
+import SpotJava.core.input.Event;
+import SpotJava.core.input.MouseEvent;
+import SpotJava.core.states.State;
+import SpotJava.core.states.StateName;
 
-import static core.graphics.Renderer.staticFont;
-import static core.gui.ComponentAnchor.CENTERX;
-import static core.gui.text.TextAlignment.MIDDLE;
-import static core.gui.text.TextFormat.NONE;
-import static core.states.StateName.*;
+import static SpotJava.core.graphics.Renderer.staticFont;
+import static SpotJava.core.gui.ComponentAnchor.CENTERX;
+import static SpotJava.core.gui.text.TextAlignment.MIDDLE;
+import static SpotJava.core.gui.text.TextFormat.NONE;
+import static SpotJava.core.states.StateName.*;
 
 public class Start extends State {
 

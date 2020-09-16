@@ -1,6 +1,6 @@
-package game.maps;
+package SpotJava.game.maps;
 
-import core.graphics.Renderer;
+import SpotJava.core.graphics.Renderer;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

@@ -1,4 +1,4 @@
-package game.gui;
+package SpotJava.game.gui;
 
 public class UI {
 

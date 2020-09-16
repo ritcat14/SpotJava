@@ -1,14 +1,22 @@
-package game.states;
+package SpotJava.game.states;
 
-import core.graphics.Renderer;
-import core.input.Event;
-import core.states.State;
-import game.entities.Player;
-import game.maps.Map;
+import SpotJava.core.graphics.Renderer;
+import SpotJava.core.input.Event;
+import SpotJava.core.objects.Light;
+import SpotJava.core.states.State;
+import SpotJava.game.entities.Player;
+import SpotJava.game.maps.Map;
 
-import static core.states.StateName.GAME;
+import java.util.ArrayList;
+import java.util.List;
+
+import static SpotJava.core.states.StateName.GAME;
 
 public class Game extends State {
+
+    private static List<Light> lights = new ArrayList<>();
+    private static List<Light> lightsToAdd = new ArrayList<>();
+    private static List<Light> lightsToRemove = new ArrayList<>();
 
     private Map map;
 
@@ -28,7 +36,17 @@ public class Game extends State {
 
     @Override
     public void render(Renderer renderer) {
+        lights.addAll(lightsToAdd);
+        lightsToAdd.clear();
+        for (Light light : lights) {
+            if (light.isRemoved()) {
+                lightsToRemove.add(light);
+            }
+        }
+        lights.removeAll(lightsToRemove);
+        lightsToRemove.clear();
         map.render(renderer);
+        renderer.renderLights(lights);
     }
 
     @Override
@@ -39,5 +57,9 @@ public class Game extends State {
     @Override
     public void onEvent(Event event) {
         if (map != null) map.onEvent(event);
+    }
+
+    public static void addLight(Light light) {
+        lightsToAdd.add(light);
     }
 }

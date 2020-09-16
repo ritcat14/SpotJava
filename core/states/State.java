@@ -1,7 +1,7 @@
-package core.states;
+package SpotJava.core.states;
 
-import core.graphics.Renderer;
-import core.input.EventListener;
+import SpotJava.core.graphics.Renderer;
+import SpotJava.core.input.EventListener;
 
 public abstract class State implements EventListener {
 

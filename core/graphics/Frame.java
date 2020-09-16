@@ -1,11 +1,11 @@
-package core.graphics;
+package SpotJava.core.graphics;
 
 import javax.swing.*;
 
-import core.input.EventListener;
-import core.input.KeyHandler;
-import core.input.MouseHandler;
-import core.states.StateManager;
+import SpotJava.core.input.EventListener;
+import SpotJava.core.input.KeyHandler;
+import SpotJava.core.input.MouseHandler;
+import SpotJava.core.states.StateManager;
 
 public class Frame extends JFrame {
 

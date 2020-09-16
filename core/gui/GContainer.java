@@ -1,4 +1,4 @@
-package core.gui;
+package SpotJava.core.gui;
 
 import java.awt.Rectangle;
 import java.util.ArrayList;
@@ -7,11 +7,11 @@ import java.util.List;
 
 import java.awt.*;
 
-import core.graphics.Renderer;
-import core.input.EventListener;
-import core.input.Event;
+import SpotJava.core.graphics.Renderer;
+import SpotJava.core.input.EventListener;
+import SpotJava.core.input.Event;
 
-import static core.gui.ComponentAnchor.*;
+import static SpotJava.core.gui.ComponentAnchor.*;
 
 /*
     Container for handling multiple GComponents

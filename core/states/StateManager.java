@@ -1,11 +1,11 @@
-package core.states;
+package SpotJava.core.states;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import core.graphics.Renderer;
-import core.input.Event;
-import core.input.EventListener;
+import SpotJava.core.graphics.Renderer;
+import SpotJava.core.input.Event;
+import SpotJava.core.input.EventListener;
 
 public class StateManager implements EventListener {
     

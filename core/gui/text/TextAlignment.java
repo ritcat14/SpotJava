@@ -1,4 +1,4 @@
-package core.gui.text;
+package SpotJava.core.gui.text;
 
 public enum TextAlignment
 {

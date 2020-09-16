@@ -1,4 +1,4 @@
-package game.entities;
+package SpotJava.game.entities;
 
 import java.awt.Color;
 import java.awt.Point;
@@ -6,13 +6,12 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
-import core.util.Images;
-import core.graphics.Renderer;
-import core.input.KeyEvent;
-import core.input.MouseEvent;
-import core.objects.Entity;
-import static core.graphics.Frame.WIDTH;
-import static core.graphics.Frame.HEIGHT;
+import SpotJava.core.util.Images;
+import SpotJava.core.graphics.Renderer;
+import SpotJava.core.input.KeyEvent;
+import SpotJava.core.objects.Entity;
+import static SpotJava.core.graphics.Frame.WIDTH;
+import static SpotJava.core.graphics.Frame.HEIGHT;
 
 public class Player extends Entity {
 

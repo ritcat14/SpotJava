@@ -1,10 +1,10 @@
-package core.objects;
+package SpotJava.core.objects;
 
 import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-import core.graphics.Renderer;
+import SpotJava.core.graphics.Renderer;
 
 public abstract class Entity extends Rectangle {
 

@@ -1,7 +1,7 @@
-package core.gui;
+package SpotJava.core.gui;
 
-import core.graphics.Renderer;
-import core.gui.text.TextAlignment;
+import SpotJava.core.graphics.Renderer;
+import SpotJava.core.gui.text.TextAlignment;
 
 import java.awt.*;
 

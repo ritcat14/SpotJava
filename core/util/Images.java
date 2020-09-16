@@ -1,4 +1,4 @@
-package core.util;
+package SpotJava.core.util;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -7,7 +7,7 @@ import java.util.Objects;
 
 import javax.imageio.ImageIO;
 
-import core.states.State;
+import SpotJava.core.states.State;
 
 public class Images {
 

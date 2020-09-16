@@ -1,9 +1,9 @@
-package core.input;
+package SpotJava.core.input;
 
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-import static core.input.Event.Type.*;
+import static SpotJava.core.input.Event.Type.*;
 
 public class MouseHandler implements MouseListener, MouseMotionListener {
 

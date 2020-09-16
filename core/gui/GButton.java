@@ -1,13 +1,13 @@
-package core.gui;
+package SpotJava.core.gui;
 
-import core.graphics.Renderer;
-import core.gui.text.TextAlignment;
-import core.input.*;
-import core.input.Event;
+import SpotJava.core.graphics.Renderer;
+import SpotJava.core.gui.text.TextAlignment;
+import SpotJava.core.input.*;
+import SpotJava.core.input.Event;
 
 import java.awt.*;
 
-import static core.input.Event.Type.*;
+import static SpotJava.core.input.Event.Type.*;
 
 public class GButton extends GLabel implements EventListener {
 

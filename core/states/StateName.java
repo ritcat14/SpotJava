@@ -1,4 +1,4 @@
-package core.states;
+package SpotJava.core.states;
 
 public enum StateName {
 

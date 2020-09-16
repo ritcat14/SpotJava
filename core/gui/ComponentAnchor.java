@@ -1,4 +1,4 @@
-package core.gui;
+package SpotJava.core.gui;
 
 public enum ComponentAnchor {
 

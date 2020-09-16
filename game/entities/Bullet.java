@@ -1,9 +1,10 @@
-package game.entities;
+package SpotJava.game.entities;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import core.graphics.Renderer;
-import core.objects.Entity;
+import SpotJava.core.graphics.Renderer;
+import SpotJava.core.objects.Entity;
 
 public class Bullet extends Entity {
 
@@ -61,4 +62,8 @@ public class Bullet extends Entity {
         renderer.renderImage(backgroundImage, getLocation());
     }
 
+    @Override
+    public void remove() {
+        super.remove();
+    }
 }

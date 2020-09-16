@@ -1,19 +1,19 @@
-package core.graphics;
+package SpotJava.core.graphics;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
-import core.gui.ComponentAnchor;
-import core.gui.GLabel;
-import core.input.EventListener;
-import core.input.KeyHandler;
-import core.input.MouseHandler;
-import core.states.StateManager;
+import SpotJava.core.gui.ComponentAnchor;
+import SpotJava.core.gui.GLabel;
+import SpotJava.core.input.EventListener;
+import SpotJava.core.input.KeyHandler;
+import SpotJava.core.input.MouseHandler;
+import SpotJava.core.states.StateManager;
 
-import static core.graphics.Renderer.staticFont;
-import static core.gui.text.TextAlignment.MIDDLE_LEFT;
-import static core.gui.text.TextFormat.NONE;
+import static SpotJava.core.graphics.Renderer.staticFont;
+import static SpotJava.core.gui.text.TextAlignment.MIDDLE_LEFT;
+import static SpotJava.core.gui.text.TextFormat.NONE;
 
 public class GameCanvas extends Canvas {
 

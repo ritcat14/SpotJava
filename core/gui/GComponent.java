@@ -1,7 +1,7 @@
-package core.gui;
+package SpotJava.core.gui;
 
-import core.graphics.Frame;
-import core.objects.Entity;
+import SpotJava.core.graphics.Frame;
+import SpotJava.core.objects.Entity;
 import java.awt.Color;
 
 public abstract class GComponent extends Entity {

@@ -1,4 +1,4 @@
-package core.util;
+package SpotJava.core.util;
 
 public class Maths {
 

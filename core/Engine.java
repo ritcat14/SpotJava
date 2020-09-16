@@ -1,10 +1,13 @@
-package core;
+package SpotJava.core;
 
-import core.graphics.Frame;
-import core.states.StateManager;
-import game.states.*;
+import SpotJava.core.graphics.Frame;
+import SpotJava.core.objects.Light;
+import SpotJava.core.states.StateManager;
+import SpotJava.game.states.*;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Engine implements Runnable {
 

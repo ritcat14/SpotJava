@@ -1,9 +1,9 @@
-package core.input;
+package SpotJava.core.input;
 
 import java.awt.event.KeyListener;
 
-import static core.input.Event.Type.KEY_PRESSED;
-import static core.input.Event.Type.KEY_RELEASED;
+import static SpotJava.core.input.Event.Type.KEY_PRESSED;
+import static SpotJava.core.input.Event.Type.KEY_RELEASED;
 
 public class KeyHandler implements KeyListener {
 

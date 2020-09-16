@@ -1,17 +1,24 @@
-package core.graphics;
+package SpotJava.core.graphics;
 
-import core.gui.text.TextAlignment;
-import core.gui.text.TextFormat;
+import SpotJava.core.gui.text.TextAlignment;
+import SpotJava.core.gui.text.TextFormat;
+import SpotJava.core.objects.Light;
 
 import java.awt.*;
 import java.awt.font.FontRenderContext;
 import java.awt.font.LineBreakMeasurer;
 import java.awt.font.TextAttribute;
 import java.awt.font.TextLayout;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
+import java.util.ArrayList;
+import java.util.List;
+
+import static SpotJava.core.graphics.Frame.HEIGHT;
+import static SpotJava.core.graphics.Frame.WIDTH;
 
 public class Renderer {
 
@@ -22,6 +29,39 @@ public class Renderer {
 
     public Renderer(GameCanvas gameCanvas) {
         this.gameCanvas = gameCanvas;
+    }
+
+    /*
+        Light Rendering
+     */
+    private final float[] dist = {0.0f, 1.0f};
+
+    public BufferedImage createLightMap(List<Light> lights) {
+        BufferedImage lightMap = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = lightMap.createGraphics();
+        g.setColor(Color.BLACK);
+        g.fillRect(0, 0, WIDTH, HEIGHT);
+
+        for (Light light : lights) {
+            Point2D center = new Point2D.Float(light.getX(), light.getY());
+            RadialGradientPaint p = new RadialGradientPaint(center, light.getRadius(), light.getDist(), light.getColours());
+            g.setPaint(p);
+            g.fillRect(0, 0, WIDTH, HEIGHT);
+        }
+        for (Light light : lights) {
+            Point2D center = new Point2D.Float(light.getX(), light.getY());
+            Color[] colors = {new Color( 1.0f , 1.0f , 1.0f , 1.0f) , new Color( 1.0f , 1.0f , 1.0f , 0.0f)};
+            RadialGradientPaint p = new RadialGradientPaint(center, light.getRadius(), light.getDist(), colors);
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.XOR, 0.95f));
+            g.setPaint(p);
+            g.fillRect(0, 0, WIDTH, HEIGHT);
+        }
+        g.dispose();
+        return lightMap;
+    }
+
+    public void renderLights(List<Light> lights) {
+        renderImage(createLightMap(lights));
     }
 
     /*
