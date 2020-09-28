@@ -46,11 +46,8 @@ public class Renderer {
             RadialGradientPaint p = new RadialGradientPaint(center, light.getRadius(), light.getDist(), light.getColours());
             g.setPaint(p);
             g.fillRect(0, 0, WIDTH, HEIGHT);
-        }
-        for (Light light : lights) {
-            Point2D center = new Point2D.Float(light.getX(), light.getY());
             Color[] colors = {new Color( 1.0f , 1.0f , 1.0f , 1.0f) , new Color( 1.0f , 1.0f , 1.0f , 0.0f)};
-            RadialGradientPaint p = new RadialGradientPaint(center, light.getRadius(), light.getDist(), colors);
+            p = new RadialGradientPaint(center, light.getRadius(), light.getDist(), colors);
             g.setComposite(AlphaComposite.getInstance(AlphaComposite.XOR, 0.95f));
             g.setPaint(p);
             g.fillRect(0, 0, WIDTH, HEIGHT);

@@ -69,8 +69,6 @@ public abstract class Map extends Entity implements EventListener {
                 tiles[y][x] = availableTiles.get(data);
             }
         }
-
-        addLight(new Light(WIDTH/2, HEIGHT/2, 250, new Color(1f, 1f, 0.0f, 0.0f)));
     }
 
     public void update() {
