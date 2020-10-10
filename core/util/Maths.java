@@ -4,8 +4,8 @@ public class Maths {
 
     private Maths() {}
 
-    public static double calculateDistance(double x1, double y1, double x2, double y2) {
-        return Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1));
+    public static float calculateDistance(double x1, double y1, double x2, double y2) {
+        return (float)Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1));
     }
 
     public static double getTOA(double opposite, double adjacent) {
